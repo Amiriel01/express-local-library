@@ -1,8 +1,7 @@
 extends layout
 
 block content
-
-  h1 ID: #{bookInstance._id}
+  h1 ID: #{bookinstance._id}
 
   p #[strong Title:]
     a(href=bookinstance.book.url) #{bookinstance.book.title}
@@ -19,8 +18,8 @@ block content
   if bookinstance.status!='Available'
     p #[strong Due back:] #{bookinstance.due_back_formatted}
 
-  else
-    p Do you really want to delete this Book Instance?
+
+  p Do you really want to delete this Book Instance?
 
     form(method='POST' action='')
       div.form-group
