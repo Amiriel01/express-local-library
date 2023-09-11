@@ -13,7 +13,14 @@ const app = express();
 // Set up mongoose connection
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = "mongodb+srv://Amiriel01:Code2022@cluster0.brm8bwh.mongodb.net/local_library?retryWrites=true&w=majority";
+
+//use this before production with my uri from the provider//
+// const dev_db_url =
+// const mongoDB = process.env.MONGODB_URI || dev_db_url;
+
+//delete this section with my info before production//
+const mongoDB =
+  "mongodb+srv://Amiriel01:Code2022@cluster0.brm8bwh.mongodb.net/local_library?retryWrites=true&w=majority";
 
 main().catch((err) => console.log(err));
 async function main() {
