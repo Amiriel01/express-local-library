@@ -2,6 +2,7 @@ const { body, validationResult } = require("express-validator");
 const Genre = require("../models/genre");
 const asyncHandler = require("express-async-handler");
 const Book = require("../models/book");
+const debug = require("debug")("genre");
 
 // Display list of all Genre.
 exports.genre_list = asyncHandler(async (req, res, next) => {
@@ -128,6 +129,7 @@ exports.genre_update_get = asyncHandler(async (req, res, next) => {
   const genre = await Genre.findById(req.params.id).exec();
 
   if (genre === null) {
+    debug(`id not found on update: ${req.params.id}`);
     // No results.
     const err = new Error("Genre not found");
     err.status = 404;

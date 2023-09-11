@@ -2,6 +2,7 @@ const { body, validationResult } = require("express-validator");
 const BookInstance = require("../models/bookinstance");
 const asyncHandler = require("express-async-handler");
 const Book = require("../models/book");
+const debug = require("debug")("bookinstance");
 
 // Display list of all BookInstances.
 exports.bookinstance_list = asyncHandler(async (req, res, next) => {
@@ -120,6 +121,7 @@ exports.bookinstance_update_get = asyncHandler(async (req, res, next) => {
     ]);
 
     if (bookInstance === null) {
+        debug(`id not found on update: ${req.params.id}`);
         const error = new Error("Book Instance Not Found");
         error.status = 404;
         return next(error);

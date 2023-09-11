@@ -3,6 +3,7 @@ const Book = require("../models/book");
 const Author = require("../models/author");
 const Genre = require("../models/genre");
 const BookInstance = require("../models/bookinstance");
+const debug = require("debug")("book");
 
 const asyncHandler = require("express-async-handler");
 const bookinstance = require("../models/bookinstance");
@@ -207,6 +208,7 @@ exports.book_update_get = asyncHandler(async (req, res, next) => {
 
     if (book === null) {
         // No results.
+        debug(`id not found on update: ${req.params.id}`);
         const err = new Error("Book not found");
         err.status = 404;
         return next(err);
