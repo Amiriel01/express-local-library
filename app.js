@@ -1,3 +1,4 @@
+require('dotenv').config();
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -32,8 +33,7 @@ mongoose.set("strictQuery", false);
 // const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 //delete this section with my info before production//
-const mongoDB =
-  "mongodb+srv://Amiriel01:Code2022@cluster0.brm8bwh.mongodb.net/local_library?retryWrites=true&w=majority";
+const mongoDB = process.env.SECRET_KEY;
 
 main().catch((err) => console.log(err));
 async function main() {
